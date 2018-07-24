@@ -1,0 +1,51 @@
+
+import urllib.request as r #导入联网工具包， 打开网址，读取内容转换为str
+data=r.urlopen('http://api.openweathermap.org/data/2.5/forecast?q=zhengzhou,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric').read().decode('utf-8','ignore')
+
+import json#字符串转字典的工具包
+data=json.loads(data)
+
+1.打印每天的天气情况
+
+def day(d):
+    print('第'+str(d//8+1)+'天的时间和天气状况为:')
+    print(data['list'][d]['dt_txt'])
+    print(data['list'][d]['weather'][0]['main'])
+    
+day(2)
+day(10)
+day(18)
+day(26)
+day(34)
+
+2.温度折线图
+
+def pic(x):
+    return '-'*int(data['list'][x]['main']['temp'])
+
+print('D'+str(2//8+1)+pic(2))
+print('D'+str(10//8+1)+pic(10))
+print('D'+str(18//8+1)+pic(18))
+print('D'+str(26//8+1)+pic(26))
+print('D'+str(34//8+1)+pic(34))
+ 
+3.获取所有温度并排序
+
+ls=[data['list'][2]['main']['temp'],data['list'][10]['main']['temp'],
+data['list'][18]['main']['temp'],data['list'][26]['main']['temp']]
+ls.append(data['list'][34]['main']['temp'])
+print('温度排序为:')
+print(sorted(ls))
+
+def lsa(d):
+    return data['list'][d]['main']['temp']
+d1=lsa(2)
+d2=lsa(10)
+d3=lsa(18)
+d4=lsa(26)
+d5=lsa(34)
+n=[d1,d2,d3,d4,d5]
+n.append(38.36)
+print('温度排序为:')
+print(sorted(n))
+
