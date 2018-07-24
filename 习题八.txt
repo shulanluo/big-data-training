@@ -1,0 +1,11 @@
+爬取淘宝数据（裙子在武汉的100页数据），保存为csv格式
+import urllib.request as r
+s=0
+f1=open('武汉.csv','w',encoding='gbk')
+for i in range(0,100):
+    s=i*44
+    url='https://s.taobao.com/search?q=%E8%A3%99%E5%AD%90&imgfile=&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a21bo.1000386.201856-taobao-item.1&ie=utf8&initiative_id=tbindexz_20170306&loc=%E6%AD%A6%E6%B1%89&bcoffset=0&ntoffset=6&p4ppushleft=1%2C48&s={}&ajax=true'.format(s)
+    data=r.urlopen(url).read().decode('utf-8')
+    f1.write(data+'\n')
+    print('第'+str(i+1)+'页 完成')
+f1.close()
