@@ -1,0 +1,45 @@
+用户输入英文，打印天气情况
+
+
+city=input('please input city')
+url='http://api.openweathermap.org/data/2.5/forecast?q={},cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'.format(city)
+data=r.urlopen(url).read().decode('utf-8','ignore')
+import json#字符串转字典的工具包
+data=json.loads(data)
+
+print('the weather at 18:00 in the first day')
+print('temperature  '+str(data['list'][2]['main']['temp']))
+print('pressure  '+str(data['list'][2]['main']['pressure']))
+print('description  '+str(data['list'][2]['weather'][0]['main']))
+print('temp_min  '+str(data['list'][2]['main']['temp_min']))
+print('temp_max  '+str(data['list'][2]['main']['temp_max']))
+
+print('the weather at 18:00 in the second day')
+print('temperature  '+str(data['list'][10]['main']['temp']))
+print('pressure  '+str(data['list'][10]['main']['pressure']))
+print('description  '+str(data['list'][10]['weather'][0]['main']))
+print('temp_min  '+str(data['list'][10]['main']['temp_min']))
+print('temp_max  '+str(data['list'][10]['main']['temp_max']))
+
+print('the weather at 18:00 in the third day')
+print('temperature  '+str(data['list'][18]['main']['temp']))
+print('pressure  '+str(data['list'][18]['main']['pressure']))
+print('description  '+str(data['list'][18]['weather'][0]['main']))
+print('temp_min  '+str(data['list'][18]['main']['temp_min']))
+print('temp_max  '+str(data['list'][18]['main']['temp_max']))
+
+
+print('the weather at 18:00 in the forth day')
+print('temperature  '+str(data['list'][26]['main']['temp']))
+print('pressure  '+str(data['list'][26]['main']['pressure']))
+print('description  '+str(data['list'][26]['weather'][0]['main']))
+print('temp_min  '+str(data['list'][26]['main']['temp_min']))
+print('temp_max  '+str(data['list'][26]['main']['temp_max']))
+
+
+print('the weather at 18:00 in the fifth day')
+print('temperature  '+str(data['list'][34]['main']['temp']))
+print('pressure  '+str(data['list'][34]['main']['pressure']))
+print('description  '+str(data['list'][34]['weather'][0]['main']))
+print('temp_min  '+str(data['list'][34]['main']['temp_min']))
+print('temp_max  '+str(data['list'][34]['main']['temp_max']))
