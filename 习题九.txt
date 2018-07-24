@@ -1,0 +1,37 @@
+1.爬取各大学在天津理科的招生数据
+
+ls=open('all_school.txt',encoding='utf-8').readlines()
+sls=[]
+
+for line in ls:
+    sls.append(line.split('-jianjie-')[1].split('.')[0])
+    
+import urllib.request as r
+url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+        'X-Requested-With':'XMLHttpRequest'}
+
+f=open('天津理科招生人数.txt','a',encoding='utf-8')
+for schoolid in sls:
+    try:
+        requ=r.Request(url,data='id={}&type=2&city=12&state=1'.format(schoolid).encode(),headers=headers)
+        f.write(r.urlopen(requ).read().decode('utf-8','ignore')+"\n")
+        print("正在写入第"+schoolid+"行数据")
+    except Exception as err:
+        print("此行有误")
+f.close()
+
+
+2.筛选出学校名和招生人数，在Echarts中可视化
+
+ls=open('G:/天津理科招生人数.txt').readlines()
+sls=[]
+sls2=[]
+
+for line in ls:
+    sls.append(line.split(',')[0].split('(')[1])
+    print(sls)
+    
+for line in ls:
+    sls2.append(int(line.split(',')[1].split(')')[0]))
+    print(sls2)
