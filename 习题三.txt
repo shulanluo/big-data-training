@@ -1,0 +1,13 @@
+´òÓ¡ÎÂ¶ÈÕÛÏßÍ¼
+
+
+t1=int(data['list'][2]['main']['temp'])
+t2=int(data['list'][10]['main']['temp'])
+t3=int(data['list'][18]['main']['temp'])
+t4=int(data['list'][26]['main']['temp'])
+t5=int(data['list'][34]['main']['temp'])
+print('D1'+str('-'*t1))
+print('D2'+str('-'*t2))
+print('D3'+str('-'*t3))
+print('D4'+str('-'*t4))
+print('D5'+str('-'*t5))
