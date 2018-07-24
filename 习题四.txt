@@ -1,0 +1,10 @@
+ÎÂ¶ÈÅÅĞò
+
+
+n=[data['list'][2]['main']['temp'],
+   data['list'][10]['main']['temp'],
+   data['list'][18]['main']['temp'],
+   data['list'][26]['main']['temp'],
+   data['list'][34]['main']['temp']]
+print('ÎÂ¶ÈÅÅĞòÎª')
+print(sorted(n))
