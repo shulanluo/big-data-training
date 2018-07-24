@@ -1,0 +1,44 @@
+1.天气温馨提示
+
+import urllib.request as r #导入联网工具包， 打开网址，读取内容转换为str
+data=r.urlopen('http://api.openweathermap.org/data/2.5/forecast?q=zhengzhou,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric').read().decode('utf-8','ignore')
+
+import json#字符串转字典的工具包
+data=json.loads(data)
+
+def opti():
+    for i in range(2,36,8):
+            print('day'+str(i//8+1)+': ')
+            print('天气:'+data['list'][i]['weather'][0]['description'])
+            print('温度:'+str(data['list'][i]['main']['temp']))
+            if data['list'][i]['main']['temp']>30:
+               print('温馨提示：气温较高，请注意避暑')
+            elif data['list'][i]['main']['temp']>20:
+                print('温馨提示：气温适宜，适合外出')
+            else:
+                print('温馨提示：气温较低，请及时添衣')
+opti()
+
+2.循环判断实现淘宝商品信息显示并提示是否包邮
+
+import urllib.request as r #导入联网工具包， 打开网址，读取内容转换为str
+data=r.urlopen('https://s.taobao.com/search?ie=utf8&initiative_id=staobaoz_20180718&stats_click=search_radio_all%3A1&js=1&imgfile=&q=%E6%B5%85%E5%8F%A3%E9%9E%8B%E5%A5%B3%E5%A4%8F%E4%BD%8E%E8%B7%9F&suggest=0_10&_input_charset=utf-8&wq=%E6%B5%85%E5%8F%A3%E9%9E%8B&suggest_query=%E6%B5%85%E5%8F%A3%E9%9E%8B&source=suggest&ajax=true').read().decode('utf-8','ignore')
+
+import json#字符串转字典的工具包
+data=json.loads(data)
+
+def show():
+    for i in range(0,36):
+        print('第'+str(i+1)+'件商品的信息为:')
+        print('名称:'+data['mods']['itemlist']['data']['auctions'][i]['title'])
+        print('价格:'+str(data['mods']['itemlist']['data']['auctions'][i]['view_price']))
+        print('发货地:'+data['mods']['itemlist']['data']['auctions'][i]['item_loc'])
+        print('销售量:'+data['mods']['itemlist']['data']['auctions'][i]['view_sales'])
+        if float(data['mods']['itemlist']['data']['auctions'][i]['view_fee'])==0.00:
+            print('此商品包邮!')
+        else:
+            print('您需自付运费!')
+        while (i+1)%4==0:
+            print('-'*50)
+            break
+show()
