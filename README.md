@@ -1,4 +1,4 @@
-# big-data-training（15计科2班汪乐乐）
+# big-data-training
 this repository is using for summitting homework of big data training homework (python)
 
 习题一：
@@ -41,7 +41,3 @@ this repository is using for summitting homework of big data training homework (
         2.获取31所城市的编号
         3.获取142000数据，31/10，每个组有三个城市的数据，后面组装在一起
         4.将142600数据使用spark统计
-
-
-
-
